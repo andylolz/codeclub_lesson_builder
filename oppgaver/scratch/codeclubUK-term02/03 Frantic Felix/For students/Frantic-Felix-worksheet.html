@@ -1,0 +1,236 @@
+<html><head><meta charset="utf-8"/><title>Frantic Felix | kodeklubben</title><link href="../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>Nivå 6</h1></div><h1 class="title">Frantic Felix</h1><img src="../../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="introduksjon" class="level1 intro">
+<h1>Introduksjon:</h1>
+<p>I dette prosjektet skal du lage et komplett spill. Det er et plattformspill, hvor katten Felix hopper rundt, unnslipper slemminger og samler nøkler for å slippe ut av hulen. Når han kommer seg ut, fortsetter spillet i neste hule.</p>
+<p>I del 1 av dette prosjektet kommer du til å lære hvordan vi får Felix til å flytte seg og samhandle med forskjellige ting. I uke to, skal du designe egne brett og nivåer. Til slutt skal du sette brettene sammen til et ferdig spill.</p>
+</section>
+<section id="del-1-lag-byggeklossene" class="level1">
+<h1>Del 1: Lag byggeklossene</h1>
+<p><strong>Plattformspill</strong>, som <strong>Manic Miner</strong> og <strong>Mario Bros</strong>, handler om en figur som beveger seg rundt i en verden og hopper inn i ting. Noen ting, som vegger, stopper deg. Andre ting, som slemminger, ta livet av deg. Ting som nøkler må du samle på. Andre ting er bakgrunner og påvirker ikke spillet i det heletatt.</p>
+<p>Det betyr at det å vite når du har kommet bort i noe er viktig. Scratch har noen klosser for å oppdage at noe berører noe annet: <code class="blocklightblue">berører sprite</code>, <code class="blocklightblue">berører farge []?</code>-kloss, <code class="blocklightblue">farge [] berører []?</code>-kloss, og <code class="blocklightblue">avstand til []</code>-kloss. Men for å lage spillet, må du vite mer enn at to figurer har kommet borti hverandre; du trenger å vite hvilken <strong>side</strong> som berøres. Hvis du går mot en vegg til venstre, kan du ikke gå lengre til venstre. Men du kan fortsatt gå til høyre, eller hoppe, eller falle ned hvis det ikke er noe gulv å stå på.</p>
+<p>Hvis du berører en slemming, kan dette skade deg; men hvis du berører slemmingen med beina, kan du skade den. Ingen av de innebygde Scratchklossene kan si noe om <strong>retningen av berøringen</strong>. Vi må derfor bygge våre egne berøringssensorer.</p>
+</section>
+<section id="oppgave-1-berøringssensor" class="level1 activity">
+<h1>Oppgave 1: Berøringssensor</h1>
+<p>Vi skal ha fire figurer som følger etter Frantic Felix. <strong>Hver figur oppdager berøring i én retning og setter en variabel hvis det oppstår en berøring</strong>. Hovedfiguren Felix bruker disse variablene for å kontrollere hvordan Felix kan bevege seg. Hver berøringssensor har en farget linje og bruker <code class="blocklightblue">farge [] berører [] ?</code>-klossen for å oppdage ting. Vi bruker <strong>svart</strong> for gulvet og <strong>grønn</strong> for hinder. Vi bruker <strong>rød</strong> for berøringssensorene.</p>
+<section id="sjekkliste" class="level2 check">
+<h2>Sjekkliste</h2>
+<ol type="1">
+<li><strong>Åpne et nytt prosjekt</strong>. Legg til <strong>frantic-felix/testlevel</strong> bakgrunnen og slett den hvite <strong>background1</strong>.</li>
+<li><strong>Endre navn på figur Sprite1 til Felix</strong>. Kontroller at drakten bare kan flippe venstre-høyre.</li>
+<li>Lag fire nye figurer fra bildene (be om hjelp hvis du ikke har disse) <strong>frantic-felix/top</strong>, <strong>frantic-felix/bottom</strong>, <strong>frantic-felix/left</strong>, og <strong>frantic-felix/right</strong>. Disse figurene skal bli berøringssensor. Gi de nye figurene navnene <strong>topp</strong>, <strong>bunn</strong>, <strong>venstre</strong>, og <strong>høyre</strong>. Kontroller at draktene deres ikke kan flippes eller roteres.</li>
+<li>Lag fire <code>variabler</code> (for hver av figurene): <strong>blokkert topp</strong>, <strong>blokkert bunn</strong>, <strong>blokkert høyre</strong> og <strong>blokkert venstre</strong>.</li>
+<li>Lag dette skriptet for hver av sensorene:</li>
+</ol>
+<p>``` scratch når grønt flagg klikkes // eksempel for høyre sensor for alltid gå til [Felix v] hvis <farge [rød v] berører [grønn v] ?> sett [blokkert høyre v] til (1) ellers sett [blokkert høyre v] til (0) slutt slutt — 6. Endre variablene for hver av sensorene. Den nederste sensoren trenger en <strong>eller</strong> kloss slik at den setter <strong>blokkert bunn</strong> hvis den berører grønn eller svart.</p>
+<p><strong>Tips</strong>: Det er enklere å velge fargene i én figur, for så å kopiere skriptet over til de andre figurene og oppdatere variablene som blir satt. Da slipper du å finne de riktige fargene fire ganger. Inntil videre trenger Felix bare et skript for å følge musepekeren evig.</p>
+</section>
+<section id="test-prosjektet" class="level2 flag">
+<h2>Test prosjektet</h2>
+<p><strong>Trykk på det grønne flagget.</strong></p>
+<p>Du bør se at Felix følger etter musepekeren, omringet av et rødt rektangel. Rektangelet er en berøringssensor. Hvis du følger med på variablene, ser du at de endrer seg når du drar Felix rundt og når han berører ulike deler av skjermen. For øyeblikket beveger Felix seg gjennom plattformene og grønne hindre. Det skal vi fikse nå.</p>
+</section>
+<section id="lagre-endringer" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+</section>
+<section id="oppgave-2-bevegelse-gulv-og-falling" class="level1 activity">
+<h1>Oppgave 2: Bevegelse, gulv og falling</h1>
+<section id="sjekkliste-1" class="level2 check">
+<h2>Sjekkliste</h2>
+<ol type="1">
+<li>Neste steg er å få Felix til å gå. Vi bruker <strong>venstre</strong> og <strong>høre piltast</strong> for å flytte ham til venstre og høyre. Hvis han ikke står på et gulv, faller han ned (vi fikser hopping etterpå). Vi vil at når man trykker på venstre piltast, så skal Felix peke til venstre og flytter seg litt. Men vi vil ikke at han skal flytte seg hvis det er en hindring i veien.</li>
+<li>Vi kunne brukt <code class="blockgrey">når [tast] trykkes</code> for å flytte Felix, men det gir en hakkete bevegelse. Det blir en mykere bevegelse hvis du bruker <code>hvis tast [pil venstre] trykket?</code>-klosser i en <code>for alltid</code> løkke. Berøringssensorer betyr at vi må teste <strong>blokkert venstre</strong> variabelen i <code>hvis</code>, og bruke en <strong>og kloss</strong> slik at Felix bare beveger seg til venstre når man trykker på en tast og <strong>blokkert venstre</strong> er 0. Vi må gjøre tilsvarende for bevegelse til høyre.</li>
+<li>Vi kunne animere Felix sine bein i samme kloss, men da beveger de seg for raskt. Gjør animasjonen i en egen <code>for alltid</code>-kloss under en annen <code>når grønt flagg klikkes</code> hatt.</li>
+<li>Det siste vi må gjøre er å ordne <strong>falling</strong>. Hvis Felix ikke står på fast grunn vil vi at han skal falle ned. Det ordner vi med en <code>for alltid</code>-løkke under en <code>når grønt flagg klikkes</code> hatt.</li>
+</ol>
+<p>```scratch når grønt flagg klikkes // håndter flytting for alltid hvis &lt; <tast [pil venstre v] trykket?> og (blokkert venstre)=(0)&gt; pek i retning (-90) gå (2) steg slutt hvis &lt; <tast [pil høyre v] trykket?> og (blokkert høyre)=(0)&gt; pek i retning (90) gå (2) steg slutt slutt</p>
+<p>når grønt flagg klikkes // beveg Felix for alltid hvis &lt; <tast [pil venstre v] trykket?> eller <tast [pil høyre v] trykket?> &gt; neste drakt vent (0.1) sekunder slutt slutt</p>
+<p>når grønt flagg klikkes // håndter falling for alltid hvis &lt;(blokkert bunn)=(0)&gt; endre y med (-2) slutt slutt —</p>
+</section>
+<section id="test-prosjektet-ditt" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Bruk musen for å dra Felix et sted på scenen og trykk så på det grønne flagget</strong>. Hvis Felix hopper til muspekeren, må du fjerne det skriptet! Du bør kunne bruke venstre og høyre knaper for å få Felix til å gå fra side til side. Hvis han ikke står på gulvet, bør han falle sakte nedover.</p>
+<ol start="5" type="1">
+<li>Vi vil også at berøringssensorene ikke skal vises. Det er ikke mulig å bruke en skjult blokk, for da vil ingen berøringer bli oppdaget. Istedet, legg til en <code>sett [gjennomsiktig v] effekt til 100</code>-klass rett under den grønn flag hatt’en i hver kollisjonssensor. Dette gjør figuren gjennomsiktig, uten å å skjule den.</li>
+</ol>
+</section>
+<section id="test-prosjektet-ditt-1" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Nå du klikker på det grønne flagget</strong>, skal kollisjonssensorene forsvinne. De dukker opp igjen når du trykker på det røde stoppskiltet.</p>
+</section>
+<section id="lagre-endringer-1" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+</section>
+<section id="oppgave-3-hopping" class="level1 activity">
+<h1>Oppgave 3: Hopping</h1>
+<p><strong>Det er et par utfordringer med hopping.</strong></p>
+<ul>
+<li>Vi vil ikke at Felix <strong>faller</strong> hvis han er _på vei opp__.</li>
+<li>Vi vil ikke at Felix skal hindres av gulv når han er på vei opp, men vi vil fortsatt at han skal stoppes av gulvet når han <strong>er på vei ned</strong>.</li>
+<li>Vi vil ikke at Felix skal <strong>hoppe opp_ i undersiden av et </strong>grønt hinder__.</li>
+<li>Vi vil at hoppet skal være en myk bevegelse, så vi vil ikke at Felix flytter seg for raskt.</li>
+<li>Felix skal bare kunne hoppe hvis han <strong>står på gulvet</strong>. Spillet blir litt for enkelt hvis Felix kan hoppe fra løse luften.</li>
+</ul>
+<section id="sjekkliste-2" class="level2 check">
+<h2>Sjekkliste</h2>
+<ol type="1">
+<li>Det som gjenstår nå, er å få Felix til å hoppe. La oss bruke <strong>mellomromstasten</strong> for å få Felix til å hoppe.</li>
+<li>For å kontrollere hoppet, bruker vi en ny ‘variabel’, <strong>hopphøyde</strong>. Hvis denne er høyere enn 0, er Felix på vei opp. Hvis den er 0, faller han (eller har falt), som beskrevet over.</li>
+<li>Vi vil at Felix skal hoppe opp til <strong>100 pixler</strong>. Legg til en ny hvis-kloss inni <code>for alltid</code>-klossen som håndterer tastetrykk. Hvis vi trykker <strong>mellomromstasten</strong> og Felix står på gulvet (variablen <strong>blokkert under</strong> er satt til 1, så setter vi <strong>hopphøyde til 100</strong>.</li>
+<li>Vi må endre falle-skriptet. I <code>for alltid</code>, trenger vi en <code>hvis-ellers</code>-kloss som oppdater hvis Felix hopper opp eller ikke. Kravet for denne <code>hvis-ellers</code>-klossen er at hvis <strong>hopphøyde</strong> er <strong>større enn 0</strong>. Den eksisterende faller ned <code>hvis</code>-klossen går inn ellers delen av den nye <code>hvis-ellers</code>-klossen.</li>
+<li>Når vi vet at Felix hopper opp, må vi sjekke om hodet han treffer noe. Hvis <strong>blokkert topp</strong> er <strong>1</strong>, sett <strong>hopphøyde</strong> til <strong>0</strong>. (Dette gjør at Felix ikke kan hoppe inn i hindringer). <strong>Ellers, flytt Felix opp 10 og reduser hopphøyde med ti.</strong></li>
+<li>Du ender opp med noe tilsvarende dette:</li>
+</ol>
+<p>```scratch når grønt flagg klikkes // håndtere falling for alltid hvis &lt;(hopphøyde)=(0)&gt; hvis &lt;(blokkert topp)=(1)&gt; sett (hopphøyde) til (0) ellers endre y med (10) endre [hopphøyde v] med (-10) slutt ellers hvis &lt;(blokkert bunn)=(0)&gt; endre y med (-2) slutt slutt slutt —</p>
+</section>
+<section id="test-prosjektet-ditt-2" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Trykk på det grønne flagget</strong>. Kan Felix hoppe? Hopper han fra en plattform til en annen? Faller han hvis han går over kanten? Hva om han hopper oppover over kanten av en plattform? Hva om han prøver å hoppe under den grønne blokken til høyre? Hva skjer når du trykker på mellomromstasten mens Felix faller?</p>
+</section>
+<section id="lagre-endringer-2" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+</section>
+<section id="oppgave-4-nøkler-og-mål" class="level1 activity">
+<h1>Oppgave 4: Nøkler og mål</h1>
+<p><strong>Vi har klart å få Felix til å bevege seg rundt i verdenen. Nå må vi få han til å klare ett nivå</strong>. Vi plasserer tre nøkler rundt i hulen. Felix kan plukke dem opp ved å gå til dem. Når han har samlet alle tre, kan han klatre til en redningskapsel og redde seg selv ut av hulen.</p>
+<ol type="1">
+<li>Vi lager en ny <code>variabel</code>, <strong>nøkler igjen</strong>, som holder orden på hvor mange nøkler som gjenstår. Et nytt skript på <strong>scenen</strong> skal sette denne til <strong>3</strong> når det <strong>grønne flagget</strong> klikkes.</li>
+<li>Både nøklene og redningskapselen må være figurer. (Bruk <strong>frantic-felix/key</strong> for nøklene og <strong>frantic-felix/escape-pod</strong> for kapselen.)</li>
+<li>Hver nøkkel trenger <strong>to skript</strong>: det første plasserer nøklen på riktig sted, med størrelse og vinkel, og en <code>for alltid</code> løkke for å endre fargen (som gjør det enklere å se den på skjermen). Det andre skriptet er en <code>for alltid</code>-kloss løkke som venter til Felix kommer bort til nøkkelen. Når dette skjer, skjuler skiptet nøkkelen og reduserer antall nøkler.</li>
+<li>Redningskapselen er et litt vanskeligere skirpt. Den bruker en <code>for alltid</code>-kloss for å vente på at <strong>nøkler å ta</strong> blir <strong>0</strong>. Med en gang dette skjer, begynner kapselen å blinke (for å vise spilleren at de kan komme seg ut). Så kan vi bruke en annen <code>if</code> for å oppdage når Felix berører den blinkende redningskapselen. Så snart han gjør det, sender kapselen en du vinner melding og sier “Du vant!”. Felix svarer på meldingen ved å gjemme seg.</li>
+</ol>
+<p>```scratch når grønt flagg klikkes gå til x:(220) y:(-125) for alltid hvis &lt;(key to get) = (0)&gt; endre [farge v] effekt med (25) hvis <berører [Felix v]?> send melding [seier v] si [Du vant!] slutt slutt slutt —</p>
+<section id="test-prosjektet-ditt-3" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Trykk på det grønne flagget</strong>.</p>
+</section>
+<section id="lagre-endringer-3" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+</section>
+<section id="oppgave-5-slemminger-og-dødelige-omgivelser" class="level1 activity">
+<h1>Oppgave 5: Slemminger og dødelige omgivelser</h1>
+<p><strong>Nå er det på tide med slemminger!</strong></p>
+<p>Det skal være to typer farlige ting. En type vil være slemminger som går rundt og skader Felix hvis kan krasjer inn i dem. Den andre typen er farlige ting i bakgrunnen.</p>
+<p><strong>La oss først lage en slemming. Den vil bare bevege seg langs en fast sti.</strong></p>
+<section id="sjekkliste-3" class="level2 check">
+<h2>Sjekkliste</h2>
+<ol type="1">
+<li><strong>Lag en ny figur</strong>, bruk hvilken som helst drakt. Den bør være samme størrelse som Felix (Vi brukte <strong>things/flower-vase</strong> drakt, og gjorde den fire steg mindre). Slemmingen trenger bare et enkelt skript som beveger den og oppdager om den berører Felix.</li>
+<li>Lag tre <code>hvis</code>-klosser inni en <code>for alltid</code>-kloss. Den første sjekker om en slemming berører Felix; hvis den gjør det, sender den en <strong>tap</strong>melding. De to andre <code>hvis</code>-klossene sjekker om slemmingen har nådd slutten av stien; hvis den har det, snur slemmingen. Tilslutt, tar slemmingen to steg. (Ved å bruke <strong>gå</strong> isteden for <strong>gli</strong> -klosser blir det enklere å kontrollere hvor raskt slemmingen går.) <strong>Vi trenger ikke å bruke kollisjonssensor her, da vi ikke bryr oss om på hvilken side Felix berører slemmingen.</strong></li>
+</ol>
+<p>```scratch når grønt flagg klikkes gå til x:(-50) y:(47) pek i retning (-90) for alltid hvis <berører [Felix v]?> send melding [tap v] slutt hvis &lt; (x-posisjon) &gt; (-200) &gt; pek i retning (90) slutt hvis &lt; (x-posisjon) &gt; (-50) &gt; pek i retning (-90) slutt gå (2) steg slutt —</p>
+<ol start="3" type="1">
+<li>Legg skript til både Felix og redningskapselen slik at den svarer på tap meldingen. Felix skal bare skjule seg selv. Kapselen skal si [Du tapte!].</li>
+</ol>
+</section>
+<section id="test-prosjektet-ditt-4" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Trykk på det grønne flagget</strong>. Beveger vasen seg? Stopper den og snur ved kanten? Hva skjer når Felix går inn i den? Hva skjer hvis Felix hopper på den, fra oversiden eller undersiden? Forsvinner Felix? Sier kapselen ifra når du har tapt? Kan du forstatt vinne spillet?</p>
+</section>
+<section id="lagre-endringer-4" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+<ol start="4" type="1">
+<li><strong>Neste, farlige ting!</strong> La oss si at alt som er lyseblå er dødlig for Felix. Last inn bakgrunnen <strong>frantic-felix/level2</strong>, som har en blå rose på det øverste nivået. Legg til enda et skript på Felix, under et grønt flagg hatt: <code>scratch for alltid hvis &lt;berører fargen [blå v]?&gt; send melding [spill slutt v] slutt</code></li>
+</ol>
+</section>
+<section id="test-prosjektet-ditt-5" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Trykk på det grønne flagget</strong>. Dør Felix hvis han kommer borti den blå rosen? Hva skjer når han berører andre ting?</p>
+</section>
+<section id="lagre-endringer-5" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+<section id="oppsummering" class="level2">
+<h2>Oppsummering</h2>
+<p><strong>Det du har laget nå er et veldig enkelt plattformspill. Akkurat nå, er det et ganske kjedelig spill. Men det er ikke poenget. Dette spillet er en verktøykasse som du kan bruke til å lage egne spill og brett. I neste del skal du lage egne brett.</strong></p>
+</section>
+<section id="del-2-brettdesign" class="level2">
+<h2>Del 2: Brettdesign</h2>
+<p><strong>Forrige gang bygde du alle delene et plattformspill består av. Nå skal du bruke disse delene for å lage egne brett..</strong></p>
+<p>Kort oppsummert gjorde du:</p>
+<ul>
+<li>Felix kan gå til venstre og høyre og han kan hoppe.</li>
+<li>Felix faller ned hvis han ikke står på gulvet.</li>
+<li>Felix kan ikke gå gjennom grønne hindere.</li>
+<li>Blå ting i bakgrunnen og slemminger tar livet av Felix.</li>
+<li>Slemminger beveger seg i faste ruter.</li>
+<li>Slemminger kan ta livet av Felix hvis han kommer borti dem.</li>
+<li>Felix kan samle nøkler ved å gå bort til dem.</li>
+<li>Når Felix har samlet alle nøklene, kommer en redningskapsel til syne og han kan rømme i sikkerhet (eller til neste nivå).</li>
+</ul>
+<p>Dette kan være byggeklossene dine. <strong>Bruk dem til å lage egne brett.</strong></p>
+<p>Du kan lage en hel rekke med brett som Felix må klare. Neste gang skal vi se på hvordan vi kan knytte brettene sammen. Brett kan ha store eller små plattformer, mange eller få plattformer. Det kan være mange slemminger eller ingen. Det kan være mange hindringer eller dødelige ting i bakgrunnen. Prøv å lage flere måter man kan klare brettet på, selv om et kanskje er enklere enn et annet. Tenk over hvor vanskelig eller enkelt brettet er.</p>
+<p>Du kan endre de spesielle fargene (svart, grønn og blå), men da må du <strong>oppdatere fargeberøringsblokkene</strong> i alle skriptene. Det må være samme farge i alle brett. (Du kunne hatt forskjellige farger i forskjellige brett, men det betyr at du måtte legge inn mange <code>eller</code>-klosser rundt fargeberøringsblokkene.)</p>
+<p><strong>Test brettene dine</strong>. Hvis du har tid, opprett brett i Scratch og spill dem. Sjekk at de ikke er <strong>for vanskelige</strong> og <strong>ikke for enkle</strong>. Hvis du programmerer brettene, må du <strong>lagre bakgrunnen du lager</strong> og notere <strong>start posisjon</strong> for Felix, nøkler, og eventuelle slemminger. I tillegg må du huske retningen slemmingene beveger seg i og hvor langt de går.</p>
+<p>Hvis du har laget et par brett og lagt dem inn i Scratch, prøv disse ekstraoppgavene:</p>
+</section>
+<section id="utvidelse-tramping" class="level2 try">
+<h2>Utvidelse: Tramping</h2>
+<p><strong>Hva om slemmingene døde hvis de ble trampet på?</strong> Kanskje du kan legge til et skript på slemmingene som gjør noe hvis slemmingen berører den nederste kollisjonssensoren.</p>
+</section>
+<section id="utvidelse-kraftpiller" class="level2 try">
+<h2>Utvidelse: Kraftpiller</h2>
+<p><strong>Du kan lage en “kraftpille” som gjør at Felix kan ødelegge slemmingene</strong>. Når Felix tar kraftpillen, ødelegger Felix slemmingene han berører. Effekten går over etterhvert</p>
+<p>Det er opp til deg hvordan du får dette til å fungere. Kanskje vil du at slemmingene skal endre utseende når Felix kan ta dem?</p>
+</section>
+<section id="test-prosjektet-ditt-6" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Trykk på det grønne flagget</strong>.</p>
+</section>
+<section id="lagre-endringer-6" class="level2 save">
+<h2>Lagre endringer</h2>
+<p>Husk å lagre endringer.</p>
+</section>
+<section id="del-3-sett-sammen-spillet" class="level2">
+<h2>Del 3: Sett sammen spillet</h2>
+<p><strong>Nå har du noen brett. Du har nok verktøy til å få dem til å fungere. Det siste vi må gjøre er å sette delene sammen til et ferdig spill!</strong> Hvis du klarer å sette sammen brettene kjapt, kan du ta en titt på aktivitet 2 and 3 før du begynner å spille spillet ditt.</p>
+</section>
+</section>
+<section id="oppgave-1-vise-et-nytt-brett" class="level1 activity">
+<h1>Oppgave 1: Vise et nytt brett</h1>
+<p><strong>Når Felix klarer ett brett, må vi flytte til neste</strong>. Det betyr at vi må få redningskapselen til å sende en <strong>start brett melding</strong> (isteden for seier meldigen) når Felix har funnet alle nøklene og klatret inn i kapselen. Vi kan bruke start brett melding for å klargjøre neste brett. Vi trenger også en <code>variabel</code>, <strong>nåværende nivå</strong>, som settes av redningskapselen før den sender <strong>start brett</strong> melding.</p>
+<p>Alt må stort sett svare på <strong>start brett</strong> meldinger for å klargjøre neste brett.</p>
+<p><strong>Scenen</strong> må vise riktig bakgrunn. Hver av slemmingene, alle nøkler, og redningskapselen trenger å flytte til <strong>riktig start posisjon</strong>. Slemmingenes rute trenger <strong>oppdatering</strong>. Felix må flyttes til sin <strong>nye start posisjon</strong>. Først da er brettet klart til start.</p>
+<p>De fleste figurene må svare på <strong>start brett melding</strong> isteden for det grønne flagget. Det betyr at du må <strong>endre hatt klossene</strong> i de fleste skript.</p>
+<section id="lagre-endringer-7" class="level2 save">
+<h2>Lagre endringer</h2>
+<p><strong>Før du gjør noe må du lagre</strong>. Du kommer til å gjøre mange endringer i spillet, så husk å lagre regelmessig.</p>
+</section>
+<section id="test-prosjektet-ditt-7" class="level2 flag">
+<h2>Test prosjektet ditt</h2>
+<p><strong>Fortsett å teste spillet etter hver endring. Husk å teste de delene som du allerede har endret, slik at de fortsatt virker som planlagt.</strong> Vi kommer ikke beskrive alle endringene, men vi skal vise hvordan Felix sitt oppdaterte skript for å vise hva som må gjøres.</p>
+<p>```scratch når jeg mottar [start brett v] gå til x:(element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v]) pek i retning (element [nåværende nivå v] av [retning v]) — for alltid hvis &lt;<tast[pil venstre v] trykket?> og &lt;(blokkert venstre)=(0)&gt; pek i retning (-90) gå (2) steg slutt hvis &lt;<tast [pil høyre v] trykket?> og &lt;(blokkert høyre)=(0)&gt; pek i retning (90) gå (2) steg slutt hvis &lt;<tast [mellomrom v] trykket?> og &lt;(blokkert bunn)=(1)&gt; sett [hopphøyde v] til (100) slutt slutt —</p>
+<p>Du legger kanskje merke til at start verdiene <strong>x</strong>, <strong>y</strong>, og <strong>retning</strong> for Felix settes med lister. Vi laget noen lister for hver figur (hver liste privat til den figuren) for å lagre verdiene vi trenger for den figuren. Du trenger en liste for hver ting du lagrer. Du trenger ikke bruke lister, du kan bruke <code>hvis</code>-klosser som sjekker hvilket brett du er på og gjør riktig ting basert på dette.</p>
+<p>Og her er redningskapselen, som håndterer all nivå-endringen:</p>
+<p>```scratch når grønt flagg klikkes sett [nåværende nivå v] til (1) send melding [start brett v]</p>
+<p>når jeg mottar [start brett v] gå til x: (element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v]) for alltid hvis &lt;[nøkler å ta v] = (0)&gt; endre [farge v] effekt med (25) hvis <berører [Felix v]?> hvis &lt;[nåværende nivå v] = <lengden av [nøkler per brett v]> si [Du vant!!] send melding [seier v] stopp [alle v] ellers endre [nåværende nivå v] med (1) send melding [start brett v] slutt slutt slutt slutt —</p>
+</section>
+</section>
+<section id="oppgave-2-spill" class="level1 activity">
+<h1>Oppgave 2: Spill!</h1>
+<p><strong>Du har laget spill</strong>. De andre i kodeklubben har laget spill. Spill de forskjellige spillene! Klarer du å runde deres spill? Kan de andre runde spillet ditt?</p>
+<section id="utvidelse-1-flere-liv" class="level2 challenge">
+<h2>Utvidelse 1: Flere liv</h2>
+<p>Felix trenger kanskje et par sjanser, eller et par liv for å klare seg igjennom brettene. <strong>Legg til en ny figur</strong> med tre drakter, som viser <strong>ett</strong>, <strong>to</strong>, og <strong>tre hjerter</strong>. Bruk frantic-felix/1-heart, frantic-felix/2-heart, and frantic-felix/3-heart draktene. Plasser figuren i hjørnet av scenen. Når det <strong>grønne flagget</strong> blir trykket, skal det vises tre hjerter. Hver gang det mottar en tap melding, skal det vises et hjerte mindre. Isteden for å vise ingen hjerter, skal figuren skjules og sende en <strong>slutt over</strong> melding.</p>
+<p><strong>spill slutt</strong> og <strong>seier</strong> meldinger bør håndteres av en <strong>ny figur</strong>, som <strong>skjules</strong> når det grønne flagget trykkes og viser riktig plakat når <strong>spill slutt</strong> og <strong>seier</strong> meldinger sendes. Denne figurer skal også stoppe alle skript når den viser seg selv.</p>
+<p>Du må endre hvordan redningskapselen håndterer vinning og tap, da dette er ansvaret for liv og ferdigplakat figurene.</p>
+<p>Kanskje er slemmingen litt for kjappe på foten, de tar Felix før brettet er kommet igang. Hvis Felix taper mer enn et liv når han kommer borti en slemming, <strong>skjul</strong> slemmingen så snart den sender <strong>lose</strong> meldingen. Det gir resten av spillet (inkludert Felix) å nullstille før slemmingene oppdager en ny kollisjon med Felix.</p>
+</section>
+<section id="utvidelse-2-tidsbegrensninger" class="level2 challenge">
+<h2>Utvidelse 2: Tidsbegrensninger</h2>
+<p><strong>Ta tiden på Felix!</strong> Bruk et <strong>Timer Scratchkort</strong> for å legge til en tidsbegrensning. Hvis timeren løper ut, sender den <strong>spill over</strong> melding. Husk å <strong>nullstille timeren</strong> når et nytt brett starter.</p>
+</section>
+</section>
+</div><script>$(document).ready(function(){
+  scratchblocks2.load_language(scratchblocks2._translations['nb']);
+  scratchblocks2.parse("pre.blocks");
+});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../../assets/script.min.js"></script></body></html>
