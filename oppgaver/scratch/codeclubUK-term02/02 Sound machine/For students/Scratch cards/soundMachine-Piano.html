@@ -1,18 +1,35 @@
-<html><head><meta charset="utf-8"/><title>Piano | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Piano</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="sjekkliste" class="level2 check">
+<html><head><meta charset="utf-8"/><title>Piano | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-xs-12"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-xs-12"><header class="clearfix"><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Piano</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo hidden-xs"/></header><div class="content"><section id="sjekkliste" class="level2 check">
 <h2>Sjekkliste</h2>
 <ul>
 <li><p>Tegn et piano ved å lage svarte og hvite rektangler. <img src="piano-costume-1.png" alt="costume1" /></p></li>
 <li><p>Lag et skript som spiller en note når a trykkes.</p></li>
 </ul>
-<p>```blocks når [a v] trykkes send melding [piano-1 v]</p>
-<p>når jeg mottar [piano-1 v] spill tone (60 v) i (0.5) takter — + Lag to noter til for når man trykker “s” eller “d” på tastaturet.</p>
-<p>```blocks når [a v] trykkes send melding [piano-1 v]</p>
-<p>når [s v] trykkes send melding [piano-2 v]</p>
-<p>når [d v] trykkes send melding [piano-3 v]</p>
-<p>når jeg mottar [piano-1 v] spill tone (60 v) i (0.5) takter</p>
-<p>når jeg mottar [piano-2 v] spill tone (64 v) i (0.5) takter</p>
-<p>når jeg mottar [piano-3 v] spill tone (67 v) i (0.5) takter</p>
-<hr />
+<pre class="blocks"><code>når [a v] trykkes
+send melding [piano-1 v]
+
+når jeg mottar [piano-1 v]
+spill tone (60 v) i (0.5) takter</code></pre>
+<ul>
+<li>Lag to noter til for når man trykker “s” eller “d” på tastaturet.</li>
+</ul>
+<pre class="blocks"><code>når [a v] trykkes
+send melding [piano-1 v]
+
+når [s v] trykkes
+send melding [piano-2 v]
+
+når [d v] trykkes
+send melding [piano-3 v]
+
+når jeg mottar [piano-1 v]
+spill tone (60 v) i (0.5) takter
+
+når jeg mottar [piano-2 v]
+spill tone (64 v) i (0.5) takter
+
+når jeg mottar [piano-3 v]
+spill tone (67 v) i (0.5) takter
+</code></pre>
 <ul>
 <li>Kopier drakten 3 ganger og fyll ulike tangenter.</li>
 </ul>
@@ -20,16 +37,30 @@
 <ul>
 <li>Sørg for at hver note bytter til en annen drakt og tilbake til <code class="blockblue">drakt1</code> slik at det ser ut som tangenten blir trykket på.</li>
 </ul>
-<p>```blocks når jeg mottar [piano-1 v] bytt drakt til [costume2 v] spill tone (60 v) i (0.5) takter bytt drakt til [costume1 v]</p>
-<p>når jeg mottar [piano-2 v] bytt drakt til [costume3 v] spill tone (60 v) i (0.5) takter bytt drakt til [costume1 v]</p>
-<p>når jeg mottar [piano-3 v] bytt drakt til [costume4 v] spill tone (60 v) i (0.5) takter bytt drakt til [costume1 v] —</p>
+<pre class="blocks"><code>når jeg mottar [piano-1 v]
+bytt drakt til [costume2 v]
+spill tone (60 v) i (0.5) takter
+bytt drakt til [costume1 v]
+
+når jeg mottar [piano-2 v]
+bytt drakt til [costume3 v]
+spill tone (60 v) i (0.5) takter
+bytt drakt til [costume1 v]
+
+når jeg mottar [piano-3 v]
+bytt drakt til [costume4 v]
+spill tone (60 v) i (0.5) takter
+bytt drakt til [costume1 v]</code></pre>
 </section>
 <section id="utfordring" class="level1 challenge">
 <h1>Utfordring</h1>
 <p>En måte å endre hvilket instrument som spilles.</p>
-<p>```blocks når [pil opp v] trykkes velg instrument (tilfeldig tall fra (1) til (99)) —</p>
+<pre class="blocks"><code>når [pil opp v] trykkes
+velg instrument (tilfeldig tall fra (1) til (99))</code></pre>
 </section>
-</div><script>$(document).ready(function(){
+</div></div><div id="footer" class="col-xs-12 clearfix"><div class="license"><p><strong>Lisens:</strong></p><p><a href="https://github.com/CodeClub/scratch-curriculum/blob/master/LICENSE.md">Code Club World Limited Terms of Service</a></p>
+</div><div class="author"><p><strong>Forfatter:</strong></p><p>Oversatt fra <a href="//codeclub.org.uk">Code Club UK</a></p>
+</div></div></div></div><script src="../../../../../../assets/script.min.js"></script><script>$(document).ready(function(){
   scratchblocks2.load_language(scratchblocks2._translations['nb']);
   scratchblocks2.parse("pre.blocks");
-});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../../../assets/script.min.js"></script></body></html>
+});</script></body></html>

@@ -1,16 +1,23 @@
-<html><head><meta charset="utf-8"/><title>Hjul | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Hjul</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="sjekkliste" class="level2 check">
+<html><head><meta charset="utf-8"/><title>Hjul | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-xs-12"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-xs-12"><header class="clearfix"><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Hjul</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo hidden-xs"/></header><div class="content"><section id="sjekkliste" class="level2 check">
 <h2>Sjekkliste</h2>
 <ul>
 <li>For å få et hjul til å bevege seg, kan vi <strong>rotere</strong> det litt av gangen og flytte det når vi mottar en <strong>flyttet melding</strong>.</li>
 </ul>
-<p>```blocks når jeg mottar [flyttet venstre v] endre x med ((hastighet) * (-1)) vend høyre (15) grader</p>
-<p>når jeg mottar [flyttet høyre v] endre x med (hastiget) vend venstre (15) grader —</p>
+<pre class="blocks"><code>når jeg mottar [flyttet venstre v]
+endre x med ((hastighet) * (-1))
+vend høyre (15) grader 
+
+når jeg mottar [flyttet høyre  v]
+endre x med (hastiget)
+vend venstre (15) grader</code></pre>
 <ul>
 <li>Hvis du vil, kan du erstatte verdiene med variabler som <code class="blockorange">hastiget</code>, slik at du kan kontrollere hastigheten i alle retninger fra ett sted.</li>
 </ul>
 <p><strong>(Merk at vi har multiplisert <code class="blockorange">hastiget</code> med -1 for å få negativ verdi?)</strong></p>
 </section>
-</div><script>$(document).ready(function(){
+</div></div><div id="footer" class="col-xs-12 clearfix"><div class="license"><p><strong>Lisens:</strong></p><p><a href="https://github.com/CodeClub/scratch-curriculum/blob/master/LICENSE.md">Code Club World Limited Terms of Service</a></p>
+</div><div class="author"><p><strong>Forfatter:</strong></p><p>Oversatt fra <a href="//codeclub.org.uk">Code Club UK</a></p>
+</div></div></div></div><script src="../../../../../../assets/script.min.js"></script><script>$(document).ready(function(){
   scratchblocks2.load_language(scratchblocks2._translations['nb']);
   scratchblocks2.parse("pre.blocks");
-});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../../../assets/script.min.js"></script></body></html>
+});</script></body></html>

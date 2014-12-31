@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"/><title>Frantic Felix | kodeklubben</title><link href="../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>Nivå 6</h1></div><h1 class="title">Frantic Felix</h1><img src="../../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="introduksjon" class="level1 intro">
+<html><head><meta charset="utf-8"/><title>Frantic Felix | kodeklubben</title><link href="../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-xs-12"><a href="../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-xs-12"><header class="clearfix"><div class="level"><h1>Nivå 6</h1></div><h1 class="title">Frantic Felix</h1><img src="../../../../../assets/img/ccno_logo.png" class="logo hidden-xs"/></header><div class="content"><section id="introduksjon" class="level1 intro">
 <h1>Introduksjon:</h1>
 <p>I dette prosjektet skal du lage et komplett spill. Det er et plattformspill, hvor katten Felix hopper rundt, unnslipper slemminger og samler nøkler for å slippe ut av hulen. Når han kommer seg ut, fortsetter spillet i neste hule.</p>
 <p>I del 1 av dette prosjektet kommer du til å lære hvordan vi får Felix til å flytte seg og samhandle med forskjellige ting. I uke to, skal du designe egne brett og nivåer. Til slutt skal du sette brettene sammen til et ferdig spill.</p>
@@ -21,7 +21,18 @@
 <li>Lag fire <code>variabler</code> (for hver av figurene): <strong>blokkert topp</strong>, <strong>blokkert bunn</strong>, <strong>blokkert høyre</strong> og <strong>blokkert venstre</strong>.</li>
 <li>Lag dette skriptet for hver av sensorene:</li>
 </ol>
-<p>``` scratch når grønt flagg klikkes // eksempel for høyre sensor for alltid gå til [Felix v] hvis <farge [rød v] berører [grønn v] ?> sett [blokkert høyre v] til (1) ellers sett [blokkert høyre v] til (0) slutt slutt — 6. Endre variablene for hver av sensorene. Den nederste sensoren trenger en <strong>eller</strong> kloss slik at den setter <strong>blokkert bunn</strong> hvis den berører grønn eller svart.</p>
+<pre class="scratch"><code>når grønt flagg klikkes // eksempel for høyre sensor
+for alltid
+    gå til [Felix v]
+    hvis &lt;farge [rød v] berører [grønn v] ?&gt;
+        sett [blokkert høyre v] til (1)
+    ellers
+        sett [blokkert høyre v] til (0)
+    slutt
+slutt</code></pre>
+<ol start="6" type="1">
+<li>Endre variablene for hver av sensorene. Den nederste sensoren trenger en <strong>eller</strong> kloss slik at den setter <strong>blokkert bunn</strong> hvis den berører grønn eller svart.</li>
+</ol>
 <p><strong>Tips</strong>: Det er enklere å velge fargene i én figur, for så å kopiere skriptet over til de andre figurene og oppdatere variablene som blir satt. Da slipper du å finne de riktige fargene fire ganger. Inntil videre trenger Felix bare et skript for å følge musepekeren evig.</p>
 </section>
 <section id="test-prosjektet" class="level2 flag">
@@ -44,9 +55,32 @@
 <li>Vi kunne animere Felix sine bein i samme kloss, men da beveger de seg for raskt. Gjør animasjonen i en egen <code>for alltid</code>-kloss under en annen <code>når grønt flagg klikkes</code> hatt.</li>
 <li>Det siste vi må gjøre er å ordne <strong>falling</strong>. Hvis Felix ikke står på fast grunn vil vi at han skal falle ned. Det ordner vi med en <code>for alltid</code>-løkke under en <code>når grønt flagg klikkes</code> hatt.</li>
 </ol>
-<p>```scratch når grønt flagg klikkes // håndter flytting for alltid hvis &lt; <tast [pil venstre v] trykket?> og (blokkert venstre)=(0)&gt; pek i retning (-90) gå (2) steg slutt hvis &lt; <tast [pil høyre v] trykket?> og (blokkert høyre)=(0)&gt; pek i retning (90) gå (2) steg slutt slutt</p>
-<p>når grønt flagg klikkes // beveg Felix for alltid hvis &lt; <tast [pil venstre v] trykket?> eller <tast [pil høyre v] trykket?> &gt; neste drakt vent (0.1) sekunder slutt slutt</p>
-<p>når grønt flagg klikkes // håndter falling for alltid hvis &lt;(blokkert bunn)=(0)&gt; endre y med (-2) slutt slutt —</p>
+<pre class="scratch"><code>når grønt flagg klikkes // håndter flytting
+for alltid
+    hvis &lt; &lt;tast [pil venstre v] trykket?&gt; og (blokkert venstre)=(0)&gt;
+        pek i retning (-90)
+        gå (2) steg
+        slutt
+    hvis &lt; &lt;tast [pil høyre v] trykket?&gt; og (blokkert høyre)=(0)&gt;
+        pek i retning (90)
+        gå (2) steg
+    slutt
+slutt
+
+når grønt flagg klikkes // beveg Felix
+for alltid
+    hvis &lt; &lt;tast [pil venstre v] trykket?&gt; eller &lt;tast [pil høyre v] trykket?&gt; &gt;
+    neste drakt
+    vent (0.1) sekunder
+    slutt
+slutt
+
+når grønt flagg klikkes // håndter falling
+for alltid
+    hvis &lt;(blokkert bunn)=(0)&gt;
+        endre y med (-2)
+    slutt
+slutt</code></pre>
 </section>
 <section id="test-prosjektet-ditt" class="level2 flag">
 <h2>Test prosjektet ditt</h2>
@@ -84,7 +118,21 @@
 <li>Når vi vet at Felix hopper opp, må vi sjekke om hodet han treffer noe. Hvis <strong>blokkert topp</strong> er <strong>1</strong>, sett <strong>hopphøyde</strong> til <strong>0</strong>. (Dette gjør at Felix ikke kan hoppe inn i hindringer). <strong>Ellers, flytt Felix opp 10 og reduser hopphøyde med ti.</strong></li>
 <li>Du ender opp med noe tilsvarende dette:</li>
 </ol>
-<p>```scratch når grønt flagg klikkes // håndtere falling for alltid hvis &lt;(hopphøyde)=(0)&gt; hvis &lt;(blokkert topp)=(1)&gt; sett (hopphøyde) til (0) ellers endre y med (10) endre [hopphøyde v] med (-10) slutt ellers hvis &lt;(blokkert bunn)=(0)&gt; endre y med (-2) slutt slutt slutt —</p>
+<pre class="scratch"><code>når grønt flagg klikkes // håndtere falling
+for alltid
+    hvis &lt;(hopphøyde)=(0)&gt;
+        hvis &lt;(blokkert topp)=(1)&gt;
+            sett (hopphøyde) til (0)
+        ellers
+            endre y med (10)
+            endre [hopphøyde v] med (-10)
+        slutt
+    ellers
+        hvis &lt;(blokkert bunn)=(0)&gt;
+            endre y med (-2)
+        slutt
+    slutt
+slutt</code></pre>
 </section>
 <section id="test-prosjektet-ditt-2" class="level2 flag">
 <h2>Test prosjektet ditt</h2>
@@ -104,7 +152,17 @@
 <li>Hver nøkkel trenger <strong>to skript</strong>: det første plasserer nøklen på riktig sted, med størrelse og vinkel, og en <code>for alltid</code> løkke for å endre fargen (som gjør det enklere å se den på skjermen). Det andre skriptet er en <code>for alltid</code>-kloss løkke som venter til Felix kommer bort til nøkkelen. Når dette skjer, skjuler skiptet nøkkelen og reduserer antall nøkler.</li>
 <li>Redningskapselen er et litt vanskeligere skirpt. Den bruker en <code>for alltid</code>-kloss for å vente på at <strong>nøkler å ta</strong> blir <strong>0</strong>. Med en gang dette skjer, begynner kapselen å blinke (for å vise spilleren at de kan komme seg ut). Så kan vi bruke en annen <code>if</code> for å oppdage når Felix berører den blinkende redningskapselen. Så snart han gjør det, sender kapselen en du vinner melding og sier “Du vant!”. Felix svarer på meldingen ved å gjemme seg.</li>
 </ol>
-<p>```scratch når grønt flagg klikkes gå til x:(220) y:(-125) for alltid hvis &lt;(key to get) = (0)&gt; endre [farge v] effekt med (25) hvis <berører [Felix v]?> send melding [seier v] si [Du vant!] slutt slutt slutt —</p>
+<pre class="scratch"><code>når grønt flagg klikkes
+gå til x:(220) y:(-125)
+for alltid
+    hvis &lt;(key to get) = (0)&gt;
+        endre [farge v] effekt med (25)
+        hvis &lt;berører [Felix v]?&gt;
+            send melding [seier v]
+            si [Du vant!]
+        slutt
+    slutt
+slutt</code></pre>
 <section id="test-prosjektet-ditt-3" class="level2 flag">
 <h2>Test prosjektet ditt</h2>
 <p><strong>Trykk på det grønne flagget</strong>.</p>
@@ -125,7 +183,21 @@
 <li><strong>Lag en ny figur</strong>, bruk hvilken som helst drakt. Den bør være samme størrelse som Felix (Vi brukte <strong>things/flower-vase</strong> drakt, og gjorde den fire steg mindre). Slemmingen trenger bare et enkelt skript som beveger den og oppdager om den berører Felix.</li>
 <li>Lag tre <code>hvis</code>-klosser inni en <code>for alltid</code>-kloss. Den første sjekker om en slemming berører Felix; hvis den gjør det, sender den en <strong>tap</strong>melding. De to andre <code>hvis</code>-klossene sjekker om slemmingen har nådd slutten av stien; hvis den har det, snur slemmingen. Tilslutt, tar slemmingen to steg. (Ved å bruke <strong>gå</strong> isteden for <strong>gli</strong> -klosser blir det enklere å kontrollere hvor raskt slemmingen går.) <strong>Vi trenger ikke å bruke kollisjonssensor her, da vi ikke bryr oss om på hvilken side Felix berører slemmingen.</strong></li>
 </ol>
-<p>```scratch når grønt flagg klikkes gå til x:(-50) y:(47) pek i retning (-90) for alltid hvis <berører [Felix v]?> send melding [tap v] slutt hvis &lt; (x-posisjon) &gt; (-200) &gt; pek i retning (90) slutt hvis &lt; (x-posisjon) &gt; (-50) &gt; pek i retning (-90) slutt gå (2) steg slutt —</p>
+<pre class="scratch"><code>når grønt flagg klikkes
+gå til x:(-50) y:(47)
+pek i retning (-90)
+for alltid
+    hvis &lt;berører [Felix v]?&gt;
+        send melding [tap v]
+    slutt
+    hvis &lt; (x-posisjon) &gt; (-200) &gt;
+        pek i retning (90)
+    slutt
+    hvis &lt; (x-posisjon) &gt; (-50) &gt;
+        pek i retning (-90)
+    slutt
+    gå (2) steg
+slutt</code></pre>
 <ol start="3" type="1">
 <li>Legg skript til både Felix og redningskapselen slik at den svarer på tap meldingen. Felix skal bare skjule seg selv. Kapselen skal si [Du tapte!].</li>
 </ol>
@@ -208,11 +280,33 @@
 <section id="test-prosjektet-ditt-7" class="level2 flag">
 <h2>Test prosjektet ditt</h2>
 <p><strong>Fortsett å teste spillet etter hver endring. Husk å teste de delene som du allerede har endret, slik at de fortsatt virker som planlagt.</strong> Vi kommer ikke beskrive alle endringene, men vi skal vise hvordan Felix sitt oppdaterte skript for å vise hva som må gjøres.</p>
-<p>```scratch når jeg mottar [start brett v] gå til x:(element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v]) pek i retning (element [nåværende nivå v] av [retning v]) — for alltid hvis &lt;<tast[pil venstre v] trykket?> og &lt;(blokkert venstre)=(0)&gt; pek i retning (-90) gå (2) steg slutt hvis &lt;<tast [pil høyre v] trykket?> og &lt;(blokkert høyre)=(0)&gt; pek i retning (90) gå (2) steg slutt hvis &lt;<tast [mellomrom v] trykket?> og &lt;(blokkert bunn)=(1)&gt; sett [hopphøyde v] til (100) slutt slutt —</p>
+<pre class="scratch"><code>når jeg mottar [start brett v]
+gå til x:(element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v])
+pek i retning (element [nåværende nivå v] av [retning v])</code></pre>
+<p>for alltid hvis &lt;<tast[pil venstre v] trykket?> og &lt;(blokkert venstre)=(0)&gt; pek i retning (-90) gå (2) steg slutt hvis &lt;<tast [pil høyre v] trykket?> og &lt;(blokkert høyre)=(0)&gt; pek i retning (90) gå (2) steg slutt hvis &lt;<tast [mellomrom v] trykket?> og &lt;(blokkert bunn)=(1)&gt; sett [hopphøyde v] til (100) slutt slutt ```</p>
 <p>Du legger kanskje merke til at start verdiene <strong>x</strong>, <strong>y</strong>, og <strong>retning</strong> for Felix settes med lister. Vi laget noen lister for hver figur (hver liste privat til den figuren) for å lagre verdiene vi trenger for den figuren. Du trenger en liste for hver ting du lagrer. Du trenger ikke bruke lister, du kan bruke <code>hvis</code>-klosser som sjekker hvilket brett du er på og gjør riktig ting basert på dette.</p>
 <p>Og her er redningskapselen, som håndterer all nivå-endringen:</p>
-<p>```scratch når grønt flagg klikkes sett [nåværende nivå v] til (1) send melding [start brett v]</p>
-<p>når jeg mottar [start brett v] gå til x: (element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v]) for alltid hvis &lt;[nøkler å ta v] = (0)&gt; endre [farge v] effekt med (25) hvis <berører [Felix v]?> hvis &lt;[nåværende nivå v] = <lengden av [nøkler per brett v]> si [Du vant!!] send melding [seier v] stopp [alle v] ellers endre [nåværende nivå v] med (1) send melding [start brett v] slutt slutt slutt slutt —</p>
+<pre class="scratch"><code>når grønt flagg klikkes
+sett [nåværende nivå v] til (1)
+send melding [start brett v]
+
+når jeg mottar [start brett v]
+gå til x: (element [nåværende nivå v] av [xs v]) y: (element [nåværende nivå v] av [ys v])
+for alltid
+    hvis &lt;[nøkler å ta v] = (0)&gt;
+    endre [farge v] effekt med (25)
+        hvis &lt;berører [Felix v]?&gt;
+            hvis &lt;[nåværende nivå v] = &lt;lengden av [nøkler per brett v]&gt;
+                si [Du vant!!]
+                send melding [seier v]
+                stopp [alle v]
+            ellers
+                endre [nåværende nivå v] med (1)
+                send melding [start brett v]
+            slutt
+        slutt
+    slutt
+slutt</code></pre>
 </section>
 </section>
 <section id="oppgave-2-spill" class="level1 activity">
@@ -230,7 +324,9 @@
 <p><strong>Ta tiden på Felix!</strong> Bruk et <strong>Timer Scratchkort</strong> for å legge til en tidsbegrensning. Hvis timeren løper ut, sender den <strong>spill over</strong> melding. Husk å <strong>nullstille timeren</strong> når et nytt brett starter.</p>
 </section>
 </section>
-</div><script>$(document).ready(function(){
+</div></div><div id="footer" class="col-xs-12 clearfix"><div class="license"><p><strong>Lisens:</strong></p><p><a href="https://github.com/CodeClub/scratch-curriculum/blob/master/LICENSE.md">Code Club World Limited Terms of Service</a></p>
+</div><div class="author"><p><strong>Forfatter:</strong></p><p>Oversatt fra <a href="//codeclub.org.uk">Code Club UK</a></p>
+</div></div></div></div><script src="../../../../../assets/script.min.js"></script><script>$(document).ready(function(){
   scratchblocks2.load_language(scratchblocks2._translations['nb']);
   scratchblocks2.parse("pre.blocks");
-});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../../assets/script.min.js"></script></body></html>
+});</script></body></html>

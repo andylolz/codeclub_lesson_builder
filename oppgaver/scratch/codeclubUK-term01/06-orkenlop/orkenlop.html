@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"/><title>Ørkenløp | kodeklubben</title><link href="../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>1.6</h1></div><h1 class="title">Ørkenløp</h1><img src="../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="introduksjon" class="level1 intro">
+<html><head><meta charset="utf-8"/><title>Ørkenløp | kodeklubben</title><link href="../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-xs-12"><a href="../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-xs-12"><header class="clearfix"><div class="level"><h1>1.6</h1></div><h1 class="title">Ørkenløp</h1><img src="../../../../assets/img/ccno_logo.png" class="logo hidden-xs"/></header><div class="content"><section id="introduksjon" class="level1 intro">
 <h1>Introduksjon</h1>
 <p>Dette er et spill for to, der en papegøye og en løvinne kjemper om å komme først gjennom ørkenen. Hver spiller må trykke en tast så fort og ofte som mulig for å flytte figuren sin, og den som kommer først til kanten av skjermen vinner.</p>
 <figure>
@@ -175,7 +175,19 @@
 <li><strong>Lag en lyd</strong> som figuren kan gi fra seg når raketten avfyres.</li>
 </ul>
 <p>Nedenfor er et forslag til hvordan et rakett-skript kan se ut. Du må legge til noen lyder og variabler på egen hånd.</p>
-<p>```blocks når [q v] trykkes hvis &lt;((kappløp) = (1)) og ((rakett_brukt) = (0))&gt; bytt drakt til [parrot-rakett v] sett [rakett_brukt v] til (1) gå (30) steg spill lyden [motorcycle passing v] hvis (berører [kant v]?) sett [kappløp v] til (0) spill lyden [Polly v] si [Polly vinner! v] i (3) sekunder send melding [Avslutt v] slutt bytt drakt til [parrot-a v] —</p>
+<pre class="blocks"><code>    når [q v] trykkes
+    hvis &lt;((kappløp) = (1)) og ((rakett_brukt) = (0))&gt;
+        bytt drakt til [parrot-rakett v]
+        sett [rakett_brukt v] til (1)
+        gå (30) steg
+        spill lyden [motorcycle passing v]
+        hvis (berører [kant v]?)
+            sett [kappløp v] til (0)
+            spill lyden [Polly v]
+            si [Polly vinner! v] i (3) sekunder
+            send melding [Avslutt v]
+        slutt
+        bytt drakt til [parrot-a v]</code></pre>
 </section>
 <section id="test-prosjektet-5" class="level2 flag">
 <h2>Test prosjektet</h2>
@@ -233,7 +245,9 @@
 <p>Veldig bra! Nå er du ferdig og kan kose deg med spillet du har laget!</p>
 </section>
 </section>
-</div><script>$(document).ready(function(){
+</div></div><div id="footer" class="col-xs-12 clearfix"><div class="license"><p><strong>Lisens:</strong></p><p><a href="https://github.com/CodeClub/scratch-curriculum/blob/master/LICENSE.md">Code Club World Limited Terms of Service</a></p>
+</div><div class="author"><p><strong>Forfatter:</strong></p><p>Oversatt fra <a href="//codeclub.org.uk">Code Club UK</a></p>
+</div></div></div></div><script src="../../../../assets/script.min.js"></script><script>$(document).ready(function(){
   scratchblocks2.load_language(scratchblocks2._translations['nb']);
   scratchblocks2.parse("pre.blocks");
-});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../assets/script.min.js"></script></body></html>
+});</script></body></html>

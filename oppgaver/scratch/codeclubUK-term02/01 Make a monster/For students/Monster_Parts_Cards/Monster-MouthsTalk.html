@@ -1,24 +1,64 @@
-<html><head><meta charset="utf-8"/><title>Munn som prater | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-md-11 col-md-offset-1"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-md-11 col-md-offset-1"><header><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Munn som prater</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo"/></header><div class="content"><section id="sjekkliste" class="level2 check">
+<html><head><meta charset="utf-8"/><title>Munn som prater | kodeklubben</title><link href="../../../../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="top-menu col-xs-12"><a href="../../../../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div><div class="col-xs-12"><header class="clearfix"><div class="level"><h1>Nivå 4</h1></div><h1 class="title">Munn som prater</h1><img src="../../../../../../assets/img/ccno_logo.png" class="logo hidden-xs"/></header><div class="content"><section id="sjekkliste" class="level2 check">
 <h2>Sjekkliste</h2>
 <ul>
 <li>For å få monsteret til å snakke, kan du bruke <code class="blockpurple">si</code>-kloss.</li>
 </ul>
-<p>``<code>blocks når [mellomrom v] trykkes si [Hallo!] i (2) sekunder --- + For å gjøre det litt mere imponerende, kan du få monsteret til å **åpne** og **lukke munnen** mens det prater. For å  gjøre dette, rediger figuren som inneholder munnen  - opprett en ny</code>drakt`{.blockpurple} som har lukket munn. Ved å bytte mellom de to, kan du animere at munnen åpner og lukker seg.</p>
-<p>``<code>blocks gjenta (8) ganger     vent (0.1) sekunder      bytt drakt til [munnLukket v]     vent (0.1) sekunder      bytt drakt til [munnÅpen v] slutt --- + For å koble de to sammen, få</code>si`{.blockpurple}-klossen til å sende en melding, som den andre klossen kan reagere på.</p>
-<p>```blocks når [mellomrom v] trykkes send melding [snakk v] si [Hallo!] i (2) sekunder</p>
-<p>når jeg mottar [snakk v] gjenta (8) ganger vent (0.1) sekunder bytt drakt til [munnLukket v] vent (0.1) sekunder bytt drakt til [munnÅpen v] slutt —</p>
+<pre class="blocks"><code>når [mellomrom v] trykkes
+si [Hallo!] i (2) sekunder</code></pre>
+<ul>
+<li>For å gjøre det litt mere imponerende, kan du få monsteret til å <strong>åpne</strong> og <strong>lukke munnen</strong> mens det prater. For å gjøre dette, rediger figuren som inneholder munnen - opprett en ny <code class="blockpurple">drakt</code> som har lukket munn. Ved å bytte mellom de to, kan du animere at munnen åpner og lukker seg.</li>
+</ul>
+<pre class="blocks"><code>gjenta (8) ganger
+    vent (0.1) sekunder 
+    bytt drakt til [munnLukket v]
+    vent (0.1) sekunder 
+    bytt drakt til [munnÅpen v]
+slutt</code></pre>
+<ul>
+<li>For å koble de to sammen, få <code class="blockpurple">si</code>-klossen til å sende en melding, som den andre klossen kan reagere på.</li>
+</ul>
+<pre class="blocks"><code>når [mellomrom v] trykkes
+send melding [snakk v]
+si [Hallo!] i (2) sekunder
+
+når jeg mottar [snakk v]
+gjenta (8) ganger
+    vent (0.1) sekunder
+    bytt drakt til [munnLukket v]
+    vent (0.1) sekunder
+    bytt drakt til [munnÅpen v]
+slutt</code></pre>
 <ul>
 <li>For å gjøre det litt mer fleksibelt, bruk en variabel for å kontrollere <code class="blockorange">snakketid</code> hvor lenge monsteret sier noe, og for å kontrollere hvor mange ganger animasjonsløkken er gjentatt.</li>
 </ul>
-<p>```blocks når [mellomrom v] trykkes sett [snakketid v] til (2) send melding [snakk v] si [Hallo!] i (snakketid) sekunder</p>
-<p>når [a v] trykkes sett [snakketid v] til (4) send melding [snakk v] si [Noe litt lengre] i (snakketid) sekunder</p>
-<p>når jeg mottar [snakk v] gjenta ((snakketid) * (4)) ganger vent (0.1) sekunder bytt til drakt [munnLukket v] vent (0.1) sekunder bytt til drakt [munnÅpen v] slutt — <strong>(Merk at vi multipliserer snakketid med 4 for å være sikkre på at løkken gjentas nok ganger)</strong></p>
+<pre class="blocks"><code>når [mellomrom v] trykkes
+sett [snakketid v] til (2)
+send melding [snakk v]
+si [Hallo!] i (snakketid) sekunder
+
+når [a v] trykkes
+sett [snakketid v] til (4)
+send melding [snakk v]
+si [Noe litt lengre] i (snakketid) sekunder
+
+når jeg mottar [snakk v]
+gjenta ((snakketid) * (4)) ganger
+    vent (0.1) sekunder 
+    bytt til drakt [munnLukket v]
+    vent (0.1) sekunder
+    bytt til drakt [munnÅpen v]
+slutt</code></pre>
+<p><strong>(Merk at vi multipliserer snakketid med 4 for å være sikkre på at løkken gjentas nok ganger)</strong></p>
 <ul>
 <li>Du kan også få monsteret ditt til å si lyder ved å bruke en av lydklossene. Husk å importere lydene i <code class="blocklightgrey">Lyd</code>.</li>
 </ul>
-<p>```blocks når jeg mottar [snakk v] spill lyden [Screech v] — <strong>Prøv å legge til lyder til andre hendelser, du kan bruke en skummel svevende lyd for et spøkelse som flyr rundt på skjermen! Har du mikrofon på datamaskinen kan du ta opp dine egne lyder, overrask de andre ved å ta opp et høyt monster BRØØØØØØØØØL!!!</strong></p>
+<pre class="blocks"><code>når jeg mottar [snakk v]
+spill lyden [Screech v]</code></pre>
+<p><strong>Prøv å legge til lyder til andre hendelser, du kan bruke en skummel svevende lyd for et spøkelse som flyr rundt på skjermen! Har du mikrofon på datamaskinen kan du ta opp dine egne lyder, overrask de andre ved å ta opp et høyt monster BRØØØØØØØØØL!!!</strong></p>
 </section>
-</div><script>$(document).ready(function(){
+</div></div><div id="footer" class="col-xs-12 clearfix"><div class="license"><p><strong>Lisens:</strong></p><p><a href="https://github.com/CodeClub/scratch-curriculum/blob/master/LICENSE.md">Code Club World Limited Terms of Service</a></p>
+</div><div class="author"><p><strong>Forfatter:</strong></p><p>Oversatt fra <a href="//codeclub.org.uk">Code Club UK</a></p>
+</div></div></div></div><script src="../../../../../../assets/script.min.js"></script><script>$(document).ready(function(){
   scratchblocks2.load_language(scratchblocks2._translations['nb']);
   scratchblocks2.parse("pre.blocks");
-});</script></div><div id="footer" class="col-md-11 col-md-offset-1"><p>creative commons</p></div></div></div><script src="../../../../../../assets/script.min.js"></script></body></html>
+});</script></body></html>
